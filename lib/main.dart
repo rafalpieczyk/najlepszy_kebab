@@ -14,7 +14,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Scaffold(),
+      home: Scaffold(
+        backgroundColor: Colors.white70,
+        appBar: AppBar(
+          backgroundColor: Colors.blueGrey,
+          title: const Text(
+            'Najlepszy kebab na Śląsku',
+            style: TextStyle(
+              fontSize: 23,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
