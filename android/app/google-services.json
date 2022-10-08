@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "861980299203",
+    "project_id": "kebab-slask12",
+    "storage_bucket": "kebab-slask12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861980299203:android:ca173238f5578cf34bb776",
+        "android_client_info": {
+          "package_name": "com.rafalpieczyk.najlepszy_kebab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861980299203-nbfo9khj47t58sp49u5r4qe5esaamt8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8j9zbuocHI70Sujt_Wqe4BPs2IJ3LC3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861980299203-nbfo9khj47t58sp49u5r4qe5esaamt8u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
