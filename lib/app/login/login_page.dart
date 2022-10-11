@@ -27,11 +27,11 @@ class LoginPage extends StatelessWidget {
               ),
               TextField(
                 controller: emailController,
-                decoration: const InputDecoration(hintText: 'e-mail'),
+                decoration: const InputDecoration(hintText: 'E-mail'),
               ),
               TextField(
                 controller: passwordController,
-                decoration: const InputDecoration(hintText: 'hasło'),
+                decoration: const InputDecoration(hintText: 'Hasło'),
                 obscureText: true,
               ),
               const SizedBox(
