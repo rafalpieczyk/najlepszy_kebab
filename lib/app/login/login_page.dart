@@ -15,6 +15,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   var errorMessage = '';
+  var isCreatingAccount = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +26,9 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Zaloguj się',
-                style: TextStyle(fontSize: 22),
+              Text(
+                isCreatingAccount == true ? 'Zarejestruj się' : 'Zaloguj się',
+                style: const TextStyle(fontSize: 22),
               ),
               const SizedBox(
                 height: 10,
@@ -53,17 +54,54 @@ class _LoginPageState extends State<LoginPage> {
                   backgroundColor: Colors.green,
                 ),
                 onPressed: () async {
-                  try {
-                    await FirebaseAuth.instance.signInWithEmailAndPassword(
-                        email: widget.emailController.text,
-                        password: widget.passwordController.text);
-                  } catch (error) {
-                    setState(() {
-                      errorMessage = 'E-mail lub hasło nieprawidłowe';
-                    });
+                  if (isCreatingAccount == true) {
+                    // rejestracja
+                    try {
+                      await FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: widget.emailController.text,
+                              password: widget.passwordController.text);
+                    } catch (error) {
+                      setState(() {
+                        errorMessage = 'E-mail lub hasło nieprawidłowe';
+                      });
+                    }
+                  } else {
+                    // logowanie
+                    try {
+                      await FirebaseAuth.instance.signInWithEmailAndPassword(
+                          email: widget.emailController.text,
+                          password: widget.passwordController.text);
+                    } catch (error) {
+                      setState(() {
+                        errorMessage = 'E-mail lub hasło nieprawidłowe';
+                      });
+                    }
                   }
                 },
-                child: const Text('Zaloguj'),
+                child:
+                    Text(isCreatingAccount == true ? 'Zarejestruj' : 'Zaloguj'),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextButton(
+                onPressed: (() {
+                  if (isCreatingAccount == true) {
+                    setState(() {
+                      isCreatingAccount = false;
+                    });
+                  } else {
+                    setState(() {
+                      isCreatingAccount = true;
+                    });
+                  }
+                }),
+                child: Text(
+                  isCreatingAccount == true
+                      ? 'Zaloguj się na instniejące konto'
+                      : 'Utwórz konto',
+                ),
               ),
             ],
           ),
