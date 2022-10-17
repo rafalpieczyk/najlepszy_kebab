@@ -15,7 +15,12 @@ class MyAccountPageContent extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Jesteś zalogowany jako $email'),
+          Text(
+            'Jesteś zalogowany jako $email',
+            style: const TextStyle(
+              fontSize: 17,
+            ),
+          ),
           const SizedBox(
             height: 20,
           ),
