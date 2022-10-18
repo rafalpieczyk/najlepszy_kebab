@@ -13,6 +13,7 @@ class AddOpinionPageContent extends StatefulWidget {
 class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
   var restaurantName = '';
   var kebsName = '';
+  var rating = 3.0;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -47,12 +48,44 @@ class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
             const SizedBox(
               height: 20,
             ),
+            Slider(
+              activeColor: const Color(0xFF459D87),
+              min: 1.0,
+              max: 5.0,
+              divisions: 8,
+              value: rating,
+              onChanged: (newValue) {
+                setState(() {
+                  rating = newValue;
+                });
+              },
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  rating.toString(),
+                  style: const TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                const SizedBox(
+                  width: 3,
+                ),
+                const Icon(
+                  Icons.star_outline,
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             SizedBox(
               height: 60,
               width: 60,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: const Color(0xFF459D87),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(55)),
                 ),
@@ -60,7 +93,7 @@ class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
                   FirebaseFirestore.instance.collection('restaurants').add({
                     'name': restaurantName,
                     'kebs': kebsName,
-                    'rating': 3.0,
+                    'rating': rating,
                   });
                 },
                 child: const Icon(Icons.add),

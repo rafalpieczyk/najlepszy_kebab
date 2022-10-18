@@ -20,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFB6BEC9),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(30.0),
@@ -28,7 +29,8 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Text(
                 isCreatingAccount == true ? 'Zarejestruj się' : 'Zaloguj się',
-                style: const TextStyle(fontSize: 22),
+                style:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
                 height: 10,
@@ -51,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
+                  backgroundColor: const Color(0xFF459D87),
                 ),
                 onPressed: () async {
                   if (isCreatingAccount == true) {
@@ -79,13 +81,17 @@ class _LoginPageState extends State<LoginPage> {
                     }
                   }
                 },
-                child:
-                    Text(isCreatingAccount == true ? 'Zarejestruj' : 'Zaloguj'),
+                child: Text(
+                  isCreatingAccount == true ? 'Zarejestruj' : 'Zaloguj',
+                  style: const TextStyle(fontSize: 16),
+                ),
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               TextButton(
+                style: TextButton.styleFrom(
+                    foregroundColor: const Color(0xFF459D87)),
                 onPressed: (() {
                   if (isCreatingAccount == true) {
                     setState(() {
@@ -101,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                   isCreatingAccount == true
                       ? 'Zaloguj się na instniejące konto'
                       : 'Utwórz konto',
+                  style: const TextStyle(fontSize: 16),
                 ),
               ),
             ],

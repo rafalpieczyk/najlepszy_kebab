@@ -22,7 +22,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFB6BEC9),
       appBar: AppBar(
+        backgroundColor: const Color(0xFF459D87),
         toolbarHeight: 50,
         title: const Text('Najlepszy Kebab na Śląsku'),
       ),
@@ -37,6 +39,8 @@ class _HomePageState extends State<HomePage> {
         return MyAccountPageContent(email: widget.user.email);
       }),
       bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: const Color(0xFFB6BEC9),
+          selectedItemColor: const Color(0xFF459D87),
           currentIndex: currentIndex,
           onTap: (newIndex) {
             setState(() {
