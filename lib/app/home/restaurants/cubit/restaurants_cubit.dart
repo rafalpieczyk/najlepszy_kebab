@@ -1,5 +1,5 @@
 // ignore_for_file: depend_on_referenced_packages
-
+import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
@@ -15,4 +15,44 @@ class RestaurantsCubit extends Cubit<RestaurantsState> {
             isLoading: false,
           ),
         );
+
+  StreamSubscription? _streamSubscription;
+
+  Future<void> start() async {
+    emit(
+      const RestaurantsState(
+        documents: [],
+        errorMessage: '',
+        isLoading: true,
+      ),
+    );
+    _streamSubscription = FirebaseFirestore.instance
+        .collection('restaurants')
+        .orderBy('rating', descending: true)
+        .snapshots()
+        .listen((data) {
+      emit(
+        RestaurantsState(
+          documents: data.docs,
+          isLoading: false,
+          errorMessage: '',
+        ),
+      );
+    })
+      ..onError((error) {
+        emit(
+          RestaurantsState(
+            documents: const [],
+            errorMessage: error.toString(),
+            isLoading: false,
+          ),
+        );
+      });
+  }
+
+  @override
+  Future<void> close() {
+    _streamSubscription?.cancel();
+    return super.close();
+  }
 }
