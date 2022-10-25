@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:najlepszy_kebab/app/home/add_opinion/add_opinion_page_content.dart';
-import 'package:najlepszy_kebab/app/home/my_account/my_account_page_content.dart';
-import 'package:najlepszy_kebab/app/home/restaurants/restaurant_page_content.dart';
+import 'package:najlepszy_kebab/app/features/home/add_opinion/add_opinion_page_content.dart';
+import 'package:najlepszy_kebab/app/features/home/my_account/my_account_page_content.dart';
+import 'package:najlepszy_kebab/app/features/home/restaurants/restaurant_page_content.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
