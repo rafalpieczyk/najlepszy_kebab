@@ -17,6 +17,13 @@ class RestaurantsCubit extends Cubit<RestaurantsState> {
 
   StreamSubscription? _streamSubscription;
 
+  Future<void> delete(documentID) async {
+    FirebaseFirestore.instance
+        .collection("restaurants")
+        .doc(documentID)
+        .delete();
+  }
+
   Future<void> start() async {
     emit(
       const RestaurantsState(

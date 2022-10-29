@@ -1,5 +1,6 @@
-import 'dart:async';
+// ignore_for_file: depend_on_referenced_packages
 
+import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
@@ -16,6 +17,10 @@ class RootCubit extends Cubit<RootState> {
           ),
         );
   StreamSubscription? _streamSubscription;
+
+  Future<void> signOut() async {
+    FirebaseAuth.instance.signOut();
+  }
 
   Future<void> start() async {
     emit(

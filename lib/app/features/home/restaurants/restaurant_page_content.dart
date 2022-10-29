@@ -27,40 +27,46 @@ class RestaurantPageContent extends StatelessWidget {
           return ListView(
             children: [
               for (final document in documents) ...[
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: const Color(0xFF459D87)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              document['name'],
-                              style: const TextStyle(
-                                  fontSize: 18, color: Colors.white),
-                            ),
-                            const SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              document['kebs'],
-                              style: const TextStyle(
-                                  fontSize: 16, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          document['rating'].toString(),
-                          style: const TextStyle(
-                              fontSize: 20, color: Colors.white),
-                        ),
-                      ],
+                Dismissible(
+                  key: ValueKey(document.id),
+                  onDismissed: (_) {
+                    context.read<RestaurantsCubit>().delete(document.id);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: const Color(0xFF459D87)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                document['name'],
+                                style: const TextStyle(
+                                    fontSize: 18, color: Colors.white),
+                              ),
+                              const SizedBox(
+                                height: 6,
+                              ),
+                              Text(
+                                document['kebs'],
+                                style: const TextStyle(
+                                    fontSize: 16, color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            document['rating'].toString(),
+                            style: const TextStyle(
+                                fontSize: 20, color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

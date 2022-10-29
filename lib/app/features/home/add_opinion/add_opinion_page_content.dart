@@ -1,5 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:najlepszy_kebab/app/features/home/add_opinion/cubit/add_opinion_cubit.dart';
 
 class AddOpinionPageContent extends StatefulWidget {
   const AddOpinionPageContent({
@@ -94,13 +95,11 @@ class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
                 onPressed: restaurantName.isEmpty || kebsName.isEmpty
                     ? null
                     : () {
-                        FirebaseFirestore.instance
-                            .collection('restaurants')
-                            .add({
-                          'name': restaurantName,
-                          'kebs': kebsName,
-                          'rating': rating,
-                        });
+                        context.read<AddOpinionCubit>().addOpinion(
+                              restaurantName: restaurantName,
+                              kebsName: kebsName,
+                              rating: rating,
+                            );
                         widget.onSave();
                       },
                 child: const Icon(Icons.add),
