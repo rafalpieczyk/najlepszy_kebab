@@ -14,7 +14,7 @@ class AddOpinionCubit extends Cubit<AddOpinionState> {
     required kebsName,
     required rating,
   }) async {
-    FirebaseFirestore.instance.collection('restaurants').add({
+    await FirebaseFirestore.instance.collection('restaurants').add({
       'name': restaurantName,
       'kebs': kebsName,
       'rating': rating,
