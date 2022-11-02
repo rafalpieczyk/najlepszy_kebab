@@ -4,5 +4,5 @@ part of 'login_cubit.dart';
 class LoginState {
   final String errorMessage;
 
-  LoginState({required this.errorMessage});
+  const LoginState({required this.errorMessage});
 }

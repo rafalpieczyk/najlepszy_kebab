@@ -6,12 +6,12 @@ part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit()
-      : super(LoginState(
+      : super(const LoginState(
           errorMessage: '',
         ));
 
   Future<void> start() async {
-    emit(LoginState(
+    emit(const LoginState(
       errorMessage: '',
     ));
   }
@@ -26,7 +26,7 @@ class LoginCubit extends Cubit<LoginState> {
         password: password,
       );
     } catch (error) {
-      emit(LoginState(
+      emit(const LoginState(
         errorMessage: 'Błąd rejestracji',
       ));
     }
@@ -42,7 +42,7 @@ class LoginCubit extends Cubit<LoginState> {
         password: password,
       );
     } catch (error) {
-      emit(LoginState(
+      emit(const LoginState(
         errorMessage: 'Błąd logowania',
       ));
     }
