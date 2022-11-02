@@ -30,7 +30,6 @@ class LoginCubit extends Cubit<LoginState> {
         errorMessage: 'Błąd rejestracji',
       ));
     }
-    ;
   }
 
   Future<void> logIn({
@@ -47,6 +46,5 @@ class LoginCubit extends Cubit<LoginState> {
         errorMessage: 'Błąd logowania',
       ));
     }
-    ;
   }
 }
