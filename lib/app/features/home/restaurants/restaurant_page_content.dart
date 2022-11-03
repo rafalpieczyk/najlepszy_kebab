@@ -26,6 +26,9 @@ class RestaurantPageContent extends StatelessWidget {
           final documents = state.documents;
           return ListView(
             children: [
+              const SizedBox(
+                height: 10,
+              ),
               for (final document in documents) ...[
                 Dismissible(
                   key: ValueKey(document.id),
